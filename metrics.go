@@ -1,4 +1,4 @@
-package example
+package prefer
 
 import (
 	"sync"
@@ -9,12 +9,12 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promauto"
 )
 
-// requestCount exports a prometheus metric that is incremented every time a query is seen by the example plugin.
-var requestCount = promauto.NewCounterVec(prometheus.CounterOpts{
+// requestFilteredCount is a prometheus metric that is incremented every time a query is filtered.
+var requestFilteredCount = promauto.NewCounterVec(prometheus.CounterOpts{
 	Namespace: plugin.Namespace,
-	Subsystem: "example",
-	Name:      "request_count_total",
-	Help:      "Counter of requests made.",
+	Subsystem: "prefer",
+	Name:      "request_filtered_count_total",
+	Help:      "Counter of filtered requests.",
 }, []string{"server"})
 
 var once sync.Once
